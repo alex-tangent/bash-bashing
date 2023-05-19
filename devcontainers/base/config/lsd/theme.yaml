@@ -1,0 +1,44 @@
+color:
+  user: "Bold Green"
+  group: "Bold Yellow"
+  permission:
+    read: "Bold Green"
+    write: "Bold Yellow"
+    exec: "Bold Red"
+  date:
+    hour_old: "Green"
+    day_old: "Yellow"
+    older: "Red"
+  size:
+    none: "Yellow"
+    small: "Green"
+    medium: "Yellow"
+    large: "Red"
+  inode:
+    valid: "Green"
+    invalid: "Red"
+  links:
+    normal: "Yellow"
+    multi_link: "Red"
+  tree:
+    normal: "Yellow"
+    old: "Red"
+  name:
+    regular: "Bold White"
+    directory: "Bold Red"
+    symlink: "Bold Cyan"
+    executable: "Bold Green"
+    readonly: "Dim White"
+icon:
+  directory: "📁"
+  file: "📄"
+  symlink: "🔗"
+  executable: "🚀"
+git_theme:
+  branch: "🌿"
+  commit: "📝"
+  staged: "📥"
+  unstaged: "📤"
+  untracked: "🆕"
+  conflicted: "❌"
+  stashed: "💼"

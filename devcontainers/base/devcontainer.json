@@ -1,0 +1,38 @@
+{
+  "name": "Base devcontainer image with poetry and bun multirepo",
+  "dockerFile": "Dockerfile",
+  "context": "..",
+  "overrideCommand": false,
+  "workspaceFolder": "/src",
+  "customizations": {
+    "codespaces": {
+      "openFiles": []
+    },
+    "vscode": {
+      "settings": {
+        "python.formatting.provider": "black",
+        "python.linting.enabled": true,
+        "python.linting.pylintEnabled": false,
+        "python.linting.flake8Enabled": true,
+        "python.languageServer": "Pylance",
+        "breadcrumbs.enabled": true,
+        "gitlens.currentLine.dateFormat": "DD.MM.YY",
+        "javascript.updateImportsOnFileMove.enabled": "always",
+        "typescript.updateImportsOnFileMove.enabled": "always"
+      },
+      "extensions": [
+        "ms-toolsai.jupyter",
+        "ms-python.python",
+        "zeshuaro.vscode-python-poetry",
+        "ms-python.black-formatter",
+        "ms-azuretools.vscode-docker",
+        "ms-vscode-remote.remote-containers"
+      ]
+    }
+  },
+  "postCreateCommand": "pnpm install && poetry install",
+  "hostRequirements": {
+    "cpus": 4
+  },
+  "remoteUser": "root"
+}
