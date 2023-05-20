@@ -27,7 +27,7 @@ RUN apt-get update && \
     update-alternatives --install /usr/bin/editor editor /usr/bin/micro 100 && \
     curl -o /usr/local/bin/diff-so-fancy https://raw.githubusercontent.com/so-fancy/diff-so-fancy/master/third_party/build_fatpack/diff-so-fancy && \
     chmod +x /usr/local/bin/diff-so-fancy && \
-    curl -fsSL https://bun.sh/install | bash - && \
+    #curl -fsSL https://bun.sh/install | bash - && \ # missing version
     apt-get clean && \
     rm -rf /var/lib/apt/lists/*
 
@@ -47,7 +47,8 @@ RUN curl -fsSL https://raw.githubusercontent.com/ellie/atuin/main/install.sh | b
 # Setup required ARGs
 ARG PYTHON_VERSION=3.11
 ARG NODEJS_VERSION=18
-ARG PNPM_VERSION=8.5
+ARG TURBO_VERSION=1.9.6
+ARG BUN_VERSION=0.6.2
 ARG POETRY_VERSION=1.4.2
 
 # Python installation
@@ -64,7 +65,7 @@ RUN add-apt-repository ppa:deadsnakes/ppa && \
 RUN curl -fsSL https://deb.nodesource.com/setup_$NODEJS_VERSION.x | bash - && \
     apt-get update && \
     apt-get install -y nodejs && \
-    npm install -g pnpm@$PNPM_VERSION turbo && \
+    npm install -g pnpm@$PNPM_VERSION bun@$BUN_VERSION turbo@TURBO_VERSION && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/*
 
