@@ -64,7 +64,7 @@ RUN add-apt-repository ppa:deadsnakes/ppa && \
 RUN curl -fsSL https://deb.nodesource.com/setup_$NODEJS_VERSION.x | bash - && \
     apt-get update && \
     apt-get install -y nodejs && \
-    npm install -g pnpm@$PNPM_VERSION && \
+    npm install -g pnpm@$PNPM_VERSION turbo && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/*
 

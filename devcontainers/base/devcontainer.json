@@ -1,9 +1,10 @@
 {
-  "name": "Base devcontainer image with poetry and bun multirepo",
+  "name": "tangent-base",
   "dockerFile": "Dockerfile",
   "context": "..",
   "overrideCommand": false,
   "workspaceFolder": "/src",
+  "postCreateCommand": "echo 'Devcontainer tangent-base ready!'",
   "customizations": {
     "codespaces": {
       "openFiles": []
@@ -29,10 +30,6 @@
         "ms-vscode-remote.remote-containers"
       ]
     }
-  },
-  "postCreateCommand": "pnpm install && poetry install",
-  "hostRequirements": {
-    "cpus": 4
   },
   "remoteUser": "root"
 }

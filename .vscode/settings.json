@@ -29,9 +29,6 @@
   "[markdown]": {
     "editor.defaultFormatter": "DavidAnson.vscode-markdownlint"
   },
-  "[json]": {
-    "editor.defaultFormatter": "richie5um2.vscode-sort-json"
-  },
   "[yaml]": {
     "editor.defaultFormatter": "redhat.vscode-yaml"
   },
