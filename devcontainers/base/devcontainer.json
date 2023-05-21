@@ -31,7 +31,7 @@
     }
   },
   "postCreateCommand": ["poetry install", "bun install"],
-  "postStartCommand": "fish -l -c 'pnpm dev'",
+  "postStartCommand": "pnpm dev",
   "remoteUser": "root",
   "forwardPorts": [3000]
 }

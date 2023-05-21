@@ -94,12 +94,14 @@ FROM builder
 # mount with configs for appending
 VOLUME ["/mnt/config"]
 
+# Change default shell to fish
+SHELL ["/usr/bin/fish", "-c"]
+
 COPY config/* "$HOME/.config/"
 RUN mv -f "$HOME/.config/config.fish" "$HOME/.config/fish/config.fish"
 # Append from config mount. To load bun config mount /mnt/config contining .bunfig.toml
 RUN test -d "/mnt/config" && \
     fish -c 'for file in /mnt/config/*; if test -f $file; cat "/mnt/config/$file" > "$HOME/.config/$file"; end; end'
-
 
 # Set workdir to /src
 WORKDIR /src
