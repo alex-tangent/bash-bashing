@@ -48,7 +48,6 @@ RUN curl -fsSL https://raw.githubusercontent.com/ellie/atuin/main/install.sh | b
 ARG PYTHON_VERSION=3.11
 ARG NODEJS_VERSION=18
 ARG PNPM_VERSION=8.5.1
-ARG TURBO_VERSION=1.9
 ARG BUN_VERSION=0.6.2
 ARG POETRY_VERSION=1.4.2
 
@@ -66,7 +65,7 @@ RUN add-apt-repository ppa:deadsnakes/ppa && \
 RUN curl -fsSL https://deb.nodesource.com/setup_$NODEJS_VERSION.x | bash - && \
     apt-get update && \
     apt-get install -y nodejs && \
-    npm install -g pnpm@$PNPM_VERSION bun@$BUN_VERSION turbo@TURBO_VERSION && \
+    npm install -g pnpm@$PNPM_VERSION bun@$BUN_VERSION turbo && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/*
 
