@@ -3,7 +3,7 @@ FROM ubuntu:jammy AS builder
 
 LABEL version="1.0"
 LABEL description="Base devcontainer image with poetry and bun multireppo"
-LABEL maintainer="alex@tangent.center"
+LABEL maintainer="contact@tangent.center"
 
 ARG HOME="/root"
 
@@ -48,7 +48,7 @@ RUN curl -fsSL https://raw.githubusercontent.com/ellie/atuin/main/install.sh | b
 ARG PYTHON_VERSION=3.11
 ARG NODEJS_VERSION=18
 ARG PNPM_VERSION=8.5.1
-ARG TURBO_VERSION=1.9.6
+ARG TURBO_VERSION=1.9
 ARG BUN_VERSION=0.6.2
 ARG POETRY_VERSION=1.4.2
 
