@@ -100,7 +100,7 @@ SHELL ["/usr/bin/fish", "-c"]
 COPY config/* "$HOME/.config/"
 RUN mv -f "$HOME/.config/config.fish" "$HOME/.config/fish/config.fish"
 # Append from config mount. To load bun config mount /mnt/config contining .bunfig.toml
-RUN test -d "/mnt/config" && fish -c 'for file in /mnt/config/*; if test -f $file; cat "$file" > "$HOME/.config/(basename $file)"; end; end'
+RUN test -d "/mnt/config" && fish -c 'for file in /mnt/config/*; if test -f $file; cat "$file" > "$HOME/.config/$file"; end; end'
 
 # Set workdir to /src
 WORKDIR /src
