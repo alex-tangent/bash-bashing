@@ -69,11 +69,6 @@ RUN curl -fsSL https://deb.nodesource.com/setup_$NODEJS_VERSION.x | bash - && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/*
 
-FROM builder
-
-# mount with configs for appending
-VOLUME ["/mnt/config"]
-
 ENV LANG=en_US.UTF-8 \
     LANGUAGE=en_US:en \
     LC_ALL=en_US.UTF-8 \
@@ -94,6 +89,11 @@ RUN curl -fsSL https://raw.githubusercontent.com/jorgebucaran/fisher/main/functi
     tangent-ag/fish-fzf-z omochice/fzf-emoji.fish dteoh/fish-direnv daleeidd/natural-selection && \
     poetry completions fish > "$HOME/.config/fish/completions/poetry.fish" && \
     curl -fsSL https://raw.githubusercontent.com/tangent-ag/bash-bashing/main/scripts/files/git/setup_git_diff-so-fancy_aliases.sh | bash -
+
+FROM builder
+
+# mount with configs for appending
+VOLUME ["/mnt/config"]
 
 COPY config/* "$HOME/.config/"
 RUN mv -f "$HOME/.config/config.fish" "$HOME/.config/fish/config.fish"
