@@ -2,7 +2,7 @@
 FROM ubuntu:jammy AS builder
 
 LABEL version="1.0"
-LABEL description="Base devcontainer image with poetry and bun multireppo"
+LABEL description="Devcontainer image with poetry and bun multireppo"
 LABEL maintainer="contact@tangent.center"
 
 ARG HOME="/root"
@@ -87,7 +87,6 @@ RUN curl -fsSL https://raw.githubusercontent.com/jorgebucaran/fisher/main/functi
     fisher install jorgebucaran/fisher jethrokuan/z decors/fish-colored-man jorgebucaran/autopair.fish \
     nickeb96/puffer-fish jorgebucaran/replay.fish joehillen/to-fish jorgebucaran/fishtape tangent-ag/fzf.fish \
     tangent-ag/fish-fzf-z omochice/fzf-emoji.fish dteoh/fish-direnv daleeidd/natural-selection && \
-    poetry completions fish > "$HOME/.config/fish/completions/poetry.fish" && \
     curl -fsSL https://raw.githubusercontent.com/tangent-ag/bash-bashing/main/scripts/files/git/setup_git_diff-so-fancy_aliases.sh | bash -
 
 FROM builder
@@ -98,7 +97,9 @@ VOLUME ["/mnt/config"]
 COPY config/* "$HOME/.config/"
 RUN mv -f "$HOME/.config/config.fish" "$HOME/.config/fish/config.fish"
 # Append from config mount. To load bun config mount /mnt/config contining .bunfig.toml
-RUN test -d "/mnt/config"; fish -c 'for file in /mnt/config/*; if test -f $file; cat "/mnt/config/$file" > "$HOME/.config/$file"; end; end'
+RUN test -d "/mnt/config" && \
+    fish -c 'for file in /mnt/config/*; if test -f $file; cat "/mnt/config/$file" > "$HOME/.config/$file"; end; end'
+
 
 # Set workdir to /src
 WORKDIR /src
