@@ -86,7 +86,7 @@ FROM builder
 ENV DEBIAN_FRONTEND=noninteractive
 
 # Change default shell to fish
-SHELL ["/usr/bin/fish", "-c"]
+SHELL ["/usr/bin/fish", "-l", "-c"]
 
 # Install fisher and plugins
 RUN curl -fsSL https://raw.githubusercontent.com/jorgebucaran/fisher/main/functions/fisher.fish | source && \
