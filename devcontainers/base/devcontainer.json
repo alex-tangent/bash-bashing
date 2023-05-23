@@ -1,8 +1,6 @@
 {
-  "$schema": "https://raw.githubusercontent.com/devcontainers/spec/main/schemas/devContainer.schema.json",
-  "name": "tangent-template",
+  "name": "base",
   "dockerFile": "Dockerfile",
-  "overrideCommand": false,
   "workspaceFolder": "/src",
   "customizations": {
     "codespaces": {
@@ -31,7 +29,7 @@
     }
   },
   "postCreateCommand": ["poetry install", "bun install"],
-  "postStartCommand": "pnpm dev",
+  "postStartCommand": "bun run dev",
   "remoteUser": "root",
   "forwardPorts": [3000]
 }
