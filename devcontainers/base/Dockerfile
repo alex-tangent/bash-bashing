@@ -57,6 +57,8 @@ RUN add-apt-repository ppa:deadsnakes/ppa && \
     apt-get -y install python3.11 && \
     update-alternatives --install /usr/bin/python3 python3 /usr/bin/python3.11 1 && \
     update-alternatives --config python3 && \
+    update-alternatives --install /usr/bin/python python /usr/bin/python3.11 1 && \
+    update-alternatives --config python && \
     curl -fsSL https://install.python-poetry.org | python3 - --version $POETRY_VERSION && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/*

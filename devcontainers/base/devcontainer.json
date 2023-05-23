@@ -1,6 +1,6 @@
 {
-  "name": "tangent",
-  "image": "llmconsulting/tangent:latest",
+  "name": "tangent-template",
+  "image": "recrash/base:latest",
   // "dockerFile": "Dockerfile"
   "customizations": {
     "codespaces": {
@@ -66,11 +66,11 @@
       ]
     }
   },
-  "waitFor": "postCreateCommand",
+  //"waitFor": "postCreateCommand",
   "updateContentCommand": "poetry install && bun install",
-  "postCreateCommand": "",
+  "postCreateCommand": "echo 'Poetry and Bun installed'",
   "postAttachCommand": {
-    "server": "bun run dev"
+    "server": ["bun run dev", "fish -l"]
   },
   "remoteUser": "root",
   "forwardPorts": [3000]
