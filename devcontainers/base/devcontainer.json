@@ -1,7 +1,6 @@
 {
-  "name": "base",
+  "name": "tangent-template",
   "dockerFile": "Dockerfile",
-  "workspaceFolder": "/src",
   "customizations": {
     "codespaces": {
       "openFiles": []

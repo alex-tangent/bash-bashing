@@ -1,23 +1,53 @@
 {
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "editor.formatOnPaste": true,
+  "editor.formatOnSave": true,
+  "editor.formatOnType": false,
+  "editor.fontFamily": "MesloLGS NF",
+  "editor.tabSize": 2,
+  "editor.wordWrap": "on",
+  "editor.codeActionsOnSave": {
+    "source.organizeImports": true,
+    "source.fixAll": true
+  },
+  "formattingToggle.affects": ["editor.formatOnSave"],
+  "files.trimTrailingWhitespace": true,
+  "files.insertFinalNewline": true,
+  "git.ignoreMissingGitWarning": true,
+  "workbench.colorTheme": "Monokai Pro (Filter Ristretto)",
+  "workbench.iconTheme": "material-icon-theme",
+  "gitlens.currentLine.dateFormat": "DD.MM.YY",
   "[javascript]": {
     "editor.defaultFormatter": "rome.rome"
-  },
-  "[markdown]": {
-    "editor.defaultFormatter": "DavidAnson.vscode-markdownlint"
-  },
-  "[python]": {
-    "editor.defaultFormatter": "ms-python.python"
-  },
-  "[toml]": {
-    "editor.defaultFormatter": "tamasfe.even-better-toml"
   },
   "[typescript]": {
     "editor.defaultFormatter": "rome.rome"
   },
+  "[python]": {
+    "editor.defaultFormatter": "ms-python.python"
+  },
+  "[markdown]": {
+    "editor.defaultFormatter": "DavidAnson.vscode-markdownlint"
+  },
   "[yaml]": {
     "editor.defaultFormatter": "redhat.vscode-yaml"
   },
+  "[toml]": {
+    "editor.defaultFormatter": "tamasfe.even-better-toml"
+  },
+  "python.formatting.provider": "black",
+  "python.linting.enabled": true,
+  "python.linting.pylintEnabled": false,
+  "python.linting.flake8Enabled": false,
+  "python.languageServer": "Pylance",
+  "tailwindCSS.includeLanguages": {
+    "plaintext": "html"
+  },
+  "javascript.updateImportsOnFileMove.enabled": "always",
+  "typescript.updateImportsOnFileMove.enabled": "always",
   "breadcrumbs.enabled": true,
+  "terminal.integrated.fontFamily": "MesloLGS NF",
+  "dev.containers.workspaceMountConsistency": "cached",
   "dev.containers.defaultExtensions": [
     "ms-toolsai.jupyter",
     "ms-python.python",
@@ -26,38 +56,6 @@
     "ms-azuretools.vscode-docker",
     "ms-vscode-remote.remote-containers"
   ],
-  "dev.containers.workspaceMountConsistency": "cached",
-  "editor.codeActionsOnSave": {
-    "source.fixAll": true,
-    "source.organizeImports": true
-  },
-  "editor.defaultFormatter": "esbenp.prettier-vscode",
-  "editor.fontFamily": "MesloLGS NF",
-  "editor.formatOnPaste": true,
-  "editor.formatOnSave": true,
-  "editor.formatOnType": false,
-  "editor.tabSize": 2,
-  "editor.wordWrap": "on",
-  "files.insertFinalNewline": true,
-  "files.trimTrailingWhitespace": true,
-  "formattingToggle.affects": [
-    "editor.formatOnSave"
-  ],
-  "git.ignoreMissingGitWarning": true,
-  "gitlens.currentLine.dateFormat": "DD.MM.YY",
-  "javascript.updateImportsOnFileMove.enabled": "always",
-  "python.formatting.provider": "black",
-  "python.languageServer": "Pylance",
-  "python.linting.enabled": true,
-  "python.linting.flake8Enabled": false,
-  "python.linting.pylintEnabled": false,
-  "tailwindCSS.includeLanguages": {
-    "plaintext": "html"
-  },
-  "terminal.integrated.fontFamily": "MesloLGS NF",
-  "typescript.updateImportsOnFileMove.enabled": "always",
-  "workbench.colorTheme": "Monokai Pro (Filter Ristretto)",
-  "workbench.iconTheme": "material-icon-theme",
   "yaml.customTags": [
     "!And",
     "!And sequence",
