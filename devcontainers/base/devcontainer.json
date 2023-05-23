@@ -1,6 +1,6 @@
 {
-  "name": "tangent-template",
-  "image": "recrash/base:latest",
+  "name": "tangent",
+  "image": "llmconsulting/tangent:latest",
   // "dockerFile": "Dockerfile"
   "customizations": {
     "codespaces": {
@@ -54,6 +54,7 @@
         "rome.rome",
         "steoates.autoimport",
         "streetsidesoftware.code-spell-checker",
+        "streetsidesoftware.code-spell-checker-german",
         "streetsidesoftware.code-spell-checker-scientific-terms",
         "tamasfe.even-better-toml",
         "TheNuProjectContributors.vscode-nushell-lang",
@@ -66,10 +67,10 @@
     }
   },
   "waitFor": "postCreateCommand",
-  "updateContentCommand": "fish -c 'poetry install && bun install'",
+  "updateContentCommand": "poetry install && bun install",
   "postCreateCommand": "",
   "postAttachCommand": {
-    "server": "fish -c 'bun run dev'"
+    "server": "bun run dev"
   },
   "remoteUser": "root",
   "forwardPorts": [3000]
