@@ -552,7 +552,6 @@ source ~/.local/share/starship/init.nu
 source ~/.local/share/atuin/init.nu
 
 # ls aliases
-def ls [] { python3 /usr/local/bin/lsicons.py }
 def l [] { lsd -l }
 def la [] { lsd -a }
 def lla [] { lsd -la }

@@ -1,9 +1,10 @@
-# Disable text merging of lock files
+.gitattributes# Disable text merging of lock files
 npm-shrinkwrap.json merge=binary
 shrinkwrap.yaml merge=binary
 yarn.lock merge=binary
 pnpm-lock.yaml merge=binary
 poetry.lock merge=binary
+bun.lockb merge=binary
 
 # Source: https://github.com/alexkaratarakis/gitattributes/blob/master/Web.gitattributes
 #

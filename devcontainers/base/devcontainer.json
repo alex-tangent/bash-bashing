@@ -72,6 +72,8 @@
   "postAttachCommand": {
     "server": ["bun run dev", "fish -l"]
   },
+  "mounts": ["source=cache,target=/cache,type=bind"],
+  "workspaceFolder": "/src",
   "remoteUser": "root",
   "forwardPorts": [3000]
 }

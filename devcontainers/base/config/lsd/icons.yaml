@@ -1,12 +1,28 @@
 name:
-  .trash: 
+  .bunfig.toml: 
   .cargo: 
+  .dockerignore: 
   .emacs.d: 
+  .git: 
+  .gitattributes: 
+  .gitignore: 
+  .trash: 
   a.out: 
+  bun.lockb: 
+  bunfig.toml: 
+  Dockerfile: 
+  package-lock.json: 
+  package.json: 
+  pnpm-lock.yaml: 
+  pnpm-workspace.yaml: 
+  poetry.lock: 
+  poetry.toml: ﯑
+  pyproject.toml: 
+  tsconfig.json: 
+  yarn.lock: 
 extension:
-  go: 
-  hs: 
-  rs: 🦀
+  "c++": 
+  "f#": 
   7z: 
   ai: 
   bat: 
@@ -14,8 +30,8 @@ extension:
   bz: 
   bz2: 
   c: 
-  "c++": 
   cc: 
+  cjs: 
   clj: 
   cljc: 
   cljs: 
@@ -33,16 +49,17 @@ extension:
   edn: 
   ejs: 
   erl: 
-  "f#": 
   fish: 
   fs: 
   fsi: 
   fsscript: 
   fsx: 
   gif: 
+  go: 
   gz: 
   hbs: 
   hrl: 
+  hs: 
   htm: 
   html: 
   ico: 
@@ -56,9 +73,13 @@ extension:
   jsx: 
   less: 
   lhs: 
+  lock: 
+  log: 
   lua: 
   markdown: 
   md: 
+  mdx: 
+  mjs: 
   ml: λ
   mli: λ
   mustache: 
@@ -74,6 +95,7 @@ extension:
   pyo: 
   rb: 
   rlib: 
+  rs: 
   rss: 
   scala: 
   scss: 
@@ -85,22 +107,25 @@ extension:
   suo: 
   t: 
   tar: 
+  toml: 󰅪
   ts: 
+  tsx: 
   twig: 
   txt: 
   vim: 
   xul: 
   xz: 
+  yaml: 
   yml: 
   zip: 
 filetype:
+  device-block: 
+  device-char: 
   dir: 
+  executable: 
   file: 
   pipe: 
   socket: 
-  executable: 
+  special: 
   symlink-dir: 
   symlink-file: 
-  device-char: 
-  device-block: 
-  special: 

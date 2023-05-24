@@ -2,7 +2,8 @@
 set -g fish_greeting
 
 function ls
-    python3 /usr/local/bin/lsicons.py
+    lsd
+    #python3 /usr/local/bin/lsicons.py
 end
 
 function l
