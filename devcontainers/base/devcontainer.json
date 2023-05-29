@@ -1,17 +1,21 @@
 {
   // "$schema": "https://raw.githubusercontent.com/devcontainers/spec/main/schemas/devContainer.schema.json",
   "name": "tangent-template",
-  "dockerFile": "Dockerfile",
-  "build": {
-    "args": {
-      "PYTHON_VERSION": "3.11",
-      "NODEJS_VERSION": "18",
-      "PNPM_VERSION": "8.5.1",
-      "BUN_VERSION": "0.6.2",
-      "POETRY_VERSION": "1.4.2"
-    }
-  },
-  "updateContentCommand": "fish -c 'poetry install && bun install'",
+  "image": "recrash/base:latest",
+  // "dockerFile": "Dockerfile",
+  // "context": ".",
+  // "build": {
+  //   "args": {
+  //     "PYTHON_VERSION": "3.11",
+  //     "NODEJS_VERSION": "18",
+  //     "PNPM_VERSION": "8.5.1",
+  //     "BUN_VERSION": "0.6.2",
+  //     "POETRY_VERSION": "1.4.2"
+  //   }
+  // },
+  "waitFor": "postCreateCommand",
+  "onCreateCommand": "git config --global --add safe.directory /workspaces/tangent-template",
+  "updateContentCommand": "poetry install && bun install",
   "postAttachCommand": {
     "server": "bun run dev"
   },
@@ -25,6 +29,10 @@
   },
   "remoteUser": "root",
   "remoteEnv": {
+    "HOME": "${containerEnv:HOME}",
+    "XDG_CONFIG_HOME": "${containerEnv:XDG_CONFIG_HOME}",
+    "XDG_CACHE_HOME": "${containerEnv:XDG_CACHE_HOME}",
+    "PATH": "${containerEnv:PATH}:/opt/bun/bin:/opt/cargo/bin:/opt/poetry/bin",
     "LANGUAGE": "en_US:en",
     "LC_ALL": "en_US.UTF-8",
     "TZ": "Europe/Berlin",
@@ -54,7 +62,7 @@
       "extensions": [
         "alefragnani.Bookmarks",
         "amazonwebservices.aws-toolkit-vscode",
-        "bmalehorn.vscode-fish",
+        "skyapps.fish-vscode",
         "bradlc.vscode-tailwindcss",
         "christian-kohler.npm-intellisense",
         "christian-kohler.path-intellisense",
@@ -72,10 +80,10 @@
         "mikestead.dotenv",
         "monokai.theme-monokai-pro-vscode",
         "ms-azuretools.vscode-docker",
-        "ms-python.black-formatter",
         "ms-python.python",
         "ms-python.vscode-pylance",
         "ms-toolsai.jupyter",
+        "ms-python.black-formatter",
         "ms-toolsai.jupyter-keymap",
         "ms-toolsai.jupyter-renderers",
         "ms-toolsai.vscode-jupyter-cell-tags",
