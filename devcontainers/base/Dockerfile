@@ -5,21 +5,26 @@ LABEL version="0.1"
 LABEL description="Devcontainer image with poetry and bun multirepo"
 LABEL maintainer="contact@tangent.berlin"
 
-ARG HOME="/root" \
-    INSTALLDIR="/opt" \
-    WORKDIR="/src" \
-    XDG_CACHE_HOME="/cache"
+ARG HOME="/root"
+ARG XDG_CONFIG_HOME="/root/.config"
+ARG XDG_CACHE_HOME="/root/.cache"
+ARG WORKDIR="/src"
+ARG INSTALLDIR="/opt"
 
 VOLUME ["${XDG_CACHE_HOME}"]
 
-RUN mkdir -p "${XDG_CACHE_HOME}"
+RUN mkdir -p "${HOME}" && \
+    mkdir -p "${WORKDIR}" && \
+    mkdir -p "${XDG_CONFIG_HOME}" && \
+    mkdir -p "${XDG_CACHE_HOME}" && \
+    mkdir -p "${INSTALLDIR}"
 
 # Env vars
 ENV DEBIAN_FRONTEND=noninteractive \
-    XDG_CONFIG_HOME="${HOME}/.config" \
     BUN_INSTALL="${INSTALLDIR}/bun" \
     POETRY_HOME="${INSTALLDIR}/poetry" \
-    PATH="${HOME}/.cargo/bin:${BUN_INSTALL}/bin:${POETRY_HOME}/bin:${PATH}"
+    CARGO_HOME="${INSTALLDIR}/cargo" \
+    PATH="${CARGO_HOME}/bin:${BUN_INSTALL}/bin:${POETRY_HOME}/bin:${PATH}"
 
 # Install dependencies
 RUN apt-get update && \
@@ -37,8 +42,8 @@ RUN apt-get update && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/*
 
-# Settings vars
-ENV LANG=en_US.UTF-8 \
+ENV DEBIAN_FRONTEND=noninteractive \
+    LANG=en_US.UTF-8 \
     LANGUAGE=en_US:en \
     LC_ALL=en_US.UTF-8 \
     TZ=Europe/Berlin \
@@ -53,11 +58,10 @@ RUN curl -fsSL https://raw.githubusercontent.com/ellie/atuin/main/install.sh | b
     cargo install nu --features=dataframe && \
     cargo install --git https://github.com/Peltoche/lsd.git --branch master && \
     cargo install organize-rt tre-command ripgrep watchexec-cli du-dust tokei starship && \
-    #curl -o /usr/local/bin/lsicons.py https://raw.githubusercontent.com/tangent-berlin/bash-bashing/main/scripts/files/lsicons.py && \
     echo "deb [trusted=yes] https://apt.fury.io/rsteube/ /" >> /etc/apt/sources.list.d/rsteube.list && \
     apt-get update && \
     apt-get -y install carapace-bin && \
-    rm -rf "${INSTALLDIR}/cargo/registry" && \
+    rm -rf "${CARGO_HOME}/registry" && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/*
 
@@ -100,8 +104,6 @@ ENV DEBIAN_FRONTEND=dialog
 
 FROM builder
 
-ENV DEBIAN_FRONTEND=noninteractive
-
 # Change default shell to fish
 SHELL ["/usr/bin/fish", "-c"]
 
@@ -113,23 +115,19 @@ RUN curl -fsSL https://raw.githubusercontent.com/jorgebucaran/fisher/main/functi
     curl -fsSL https://raw.githubusercontent.com/tangent-berlin/bash-bashing/main/scripts/files/git/setup_git_diff-so-fancy_aliases.sh | bash -
 
 COPY config/* "$HOME/.config/"
-RUN mv -f "$HOME/.config/config.fish" "$HOME/.config/fish/config.fish" && \
-    echo "Configs copied:" && \
-    dust -d 3 "$HOME"
+RUN mv -f "$HOME/.config/config.fish" "$HOME/.config/fish/config.fish"
 
+# ToDo: Set up a config volume
 #VOLUME ["/mnt/config"]
 # Append from config mount. To load bun config mount /mnt/config contining .bunfig.toml
 #RUN fish -c 'for file in "/mnt/config/*"; if test -f $file; cat "$file" > "$HOME/.config/$file"; end; end'
 
+# ToDo: Set up a cache volume
 # Install to fetch cache
-RUN mkdir -p /tmp/.cache && cd /tmp/.cache && \
-    bun create tangent-berlin/tangent-template . && \
-    bun install && \
-    pnpm install && \
-    rm -rdf /tmp/.cache && \
-    dust -d 1 "$XDG_CACHE_HOME"
+# RUN mkdir -p /root/.cache/template && cd /root/.cache/template && \
+#     bun create tangent-berlin/tangent-template . && \
+#     bun install
 
-RUN mkdir -p "$WORKDIR"
 WORKDIR "$WORKDIR"
 
 ENV DEBIAN_FRONTEND=dialog

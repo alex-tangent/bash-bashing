@@ -1,4 +1,4 @@
-.gitattributes# Disable text merging of lock files
+# Disable text merging of lock files
 npm-shrinkwrap.json merge=binary
 shrinkwrap.yaml merge=binary
 yarn.lock merge=binary

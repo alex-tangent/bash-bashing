@@ -1,7 +1,40 @@
 {
+  // "$schema": "https://raw.githubusercontent.com/devcontainers/spec/main/schemas/devContainer.schema.json",
   "name": "tangent-template",
-  "image": "recrash/base:latest",
-  // "dockerFile": "Dockerfile"
+  "dockerFile": "Dockerfile",
+  "build": {
+    "args": {
+      "PYTHON_VERSION": "3.11",
+      "NODEJS_VERSION": "18",
+      "PNPM_VERSION": "8.5.1",
+      "BUN_VERSION": "0.6.2",
+      "POETRY_VERSION": "1.4.2"
+    }
+  },
+  "updateContentCommand": "git config --global --add safe.directory /workspaces/tangent-template && fish -c 'poetry install && bun install'",
+  "postAttachCommand": {
+    "server": "bun run dev"
+  },
+  "workspaceFolder": "/workspaces/tangent-template",
+  "forwardPorts": [3000],
+  "containerUser": "root",
+  "containerEnv": {
+    "HOME": "/root",
+    "XDG_CONFIG_HOME": "/root/.config",
+    "XDG_CACHE_HOME": "/root/.cache"
+  },
+  "remoteUser": "root",
+  "remoteEnv": {
+    "LANGUAGE": "en_US:en",
+    "LC_ALL": "en_US.UTF-8",
+    "TZ": "Europe/Berlin",
+    "EDITOR": "/usr/bin/micro",
+    "TERM": "/usr/bin/fish",
+    "MICRO_TRUECOLOR": "1",
+    "FZF_DEFAULT_COMMAND": "/usr/bin/fd",
+    "BAT_PAGER": "/usr/bin/bat",
+    "FD_OPTIONS": "--hidden --no-ignore-vcs"
+  },
   "customizations": {
     "codespaces": {
       "openFiles": []
@@ -65,15 +98,5 @@
         "Zignd.html-css-class-completion"
       ]
     }
-  },
-  //"waitFor": "postCreateCommand",
-  "updateContentCommand": "poetry install && bun install",
-  "postCreateCommand": "echo 'Poetry and Bun installed'",
-  "postAttachCommand": {
-    "server": ["bun run dev", "fish -l"]
-  },
-  "mounts": ["source=cache,target=/cache,type=bind"],
-  "workspaceFolder": "/src",
-  "remoteUser": "root",
-  "forwardPorts": [3000]
+  }
 }
